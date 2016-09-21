@@ -373,6 +373,10 @@ _CFAttributeToPyObject(PyObject *self,      // IN: Python self object
 	  else Py_RETURN_FALSE;
    }
 
+   if (CFURLGetTypeID() == CFGetTypeID(attrValue)){
+        return CFStringRefToPyUnicode(CFURLGetString(attrValue));
+   }
+
    if (kAXValueCGSizeType == AXValueGetType(attrValue)) {
       return CGValueToPyTuple(attrValue);
    }
